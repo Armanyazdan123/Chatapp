@@ -1,5 +1,5 @@
 [build]
-  publish = "path/to/your/build/directory"
+  publish = "C:\Users\hoyaz\PycharmProjects\chtpp"
   command = "docker build -t your-app . && docker run -p 80:80 your-app"
 
 [[plugins]]
