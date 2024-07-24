@@ -1,6 +1,7 @@
 [build]
-  publish = "C:\Users\hoyaz\PycharmProjects\chtpp"
   command = "docker build -t your-app . && docker run -p 80:80 your-app"
+  publish = "C:/Users/hoyaz/PycharmProjects/chtpp"
 
 [[plugins]]
   package = "@netlify/plugin-docker"
+
