@@ -1,8 +1,6 @@
 [build]
-  publish = "."
+  publish = "path/to/your/build/directory"
+  command = "docker build -t your-app . && docker run -p 80:80 your-app"
 
 [[plugins]]
-  package = "netlify-plugin-docker"
-
-[context.production]
-  environment = { PORT = "80" }
+  package = "@netlify/plugin-docker"
