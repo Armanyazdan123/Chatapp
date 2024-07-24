@@ -1,4 +1,4 @@
-﻿anyio==3.6.2
+anyio==3.6.2
 certifi==2023.5.7
 flet==0.23.2
 flet-core==0.23.2
