@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Compare Product Sentiments</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body>
+    <div class="container">
+        <h1>Compare Product Sentiment</h1>
+
+        {% for product, sentiment_counts in product_sentiment.items() %}
+        <h2>{{ product }}</h2>
+        <table>
+            <tr><th>Sentiment</th><th>Count</th></tr>
+            {% for sentiment, count in sentiment_counts.items() %}
+            <tr><td>{{ sentiment }}</td><td>{{ count }}</td></tr>
+            {% endfor %}
+        </table>
+        {% endfor %}
+
+        <a href="/dashboard">Back to Dashboard</a>
+    </div>
+</body>
+</html>

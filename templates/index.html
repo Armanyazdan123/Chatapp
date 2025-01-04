@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Business Sentiment Analysis</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body>
+    <div class="container">
+        <h1>Customer Feedback Sentiment Analysis</h1>
+        <form id="review-form">
+            <textarea name="review" placeholder="Enter your feedback here..." required></textarea>
+            <button type="submit">Submit Review</button>
+        </form>
+
+        <div id="sentiment-result">
+            <!-- Sentiment result will appear here -->
+        </div>
+
+        <a href="/dashboard">View Dashboard</a>
+    </div>
+
+    <script>
+        // Review form submission
+        document.getElementById('review-form').addEventListener('submit', function(event) {
+            event.preventDefault();
+            const reviewText = document.querySelector('textarea[name="review"]').value;
+            fetch('/submit_review', {
+                method: 'POST',
+                body: new URLSearchParams({ 'review': reviewText }),
+                headers: { 'Content-Type': 'application/x-www-form-urlencoded' }
+            })
+            .then(response => response.json())
+            .then(data => {
+                document.getElementById('sentiment-result').innerHTML = `
+                    <h3>Sentiment: ${data.sentiment}</h3>
+                    <p>Confidence: ${data.confidence.toFixed(2)}</p>
+                    <p>Timestamp: ${data.timestamp}</p>
+                `;
+            });
+        });
+    </script>
+</body>
+</html>

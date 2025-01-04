@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Business Sentiment Dashboard</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body>
+    <div class="container">
+        <h1>Sentiment Analysis Dashboard</h1>
+
+        <h2>Review Sentiment Analytics</h2>
+        <div>
+            <img src="data:image/png;base64,{{ sentiment_img }}" alt="Sentiment Distribution">
+        </div>
+        <h3>Sentiment Counts:</h3>
+        <table>
+            <tr><th>Sentiment</th><th>Count</th></tr>
+            {% for sentiment, count in sentiment_counts.items() %}
+            <tr><td>{{ sentiment }}</td><td>{{ count }}</td></tr>
+            {% endfor %}
+        </table>
+
+        <a href="/">Back to Home</a>
+    </div>
+</body>
+</html>
